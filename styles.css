@@ -1,0 +1,46 @@
+#graph-viz-trigger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999;
+    padding: 10px 16px;
+    background-color: #ffa116;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-family: sans-serif;
+}
+
+#graph-viz-trigger.active {
+    background-color: #cc8111;
+}
+
+#graph-viz-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100vh;
+    z-index: 999998;
+    background: white;
+    border-left: 1px solid #ddd;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+}
+
+#graph-viz-resizer {
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    cursor: ew-resize;
+    z-index: 1000000;
+    background: transparent;
+}
+
+#graph-viz-resizer:hover {
+    background: rgba(255, 161, 22, 0.4);
+}

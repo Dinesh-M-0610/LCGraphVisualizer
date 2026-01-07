@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "LeetCode Graph Visualizer",
+  "version": "1.1.0",
+  "description": "Visualizes adjacency lists with resizable panel and dark mode.",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/problems/*"],
+      "js": ["cytoscape.min.js", "content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["panel.html", "panel.js", "cytoscape.min.js"],
+      "matches": ["*://leetcode.com/*"]
+    }
+  ]
+}

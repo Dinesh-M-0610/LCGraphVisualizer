@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --bg: #fcfcfc; --ui-bg: #fff; --text: #333; --border: #ddd; --input-bg: #fff;
+        }
+        body.dark {
+            --bg: #1a1a1a; --ui-bg: #282828; --text: #eff1f6; --border: #444; --input-bg: #333;
+        }
+        body {
+            margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg); color: var(--text); overflow: hidden;
+        }
+        #ui-layer {
+            padding: 10px; background: var(--ui-bg); border-bottom: 1px solid var(--border); flex-shrink: 0;
+        }
+        textarea {
+            width: 100%; height: 60px; font-family: monospace; font-size: 11px; padding: 6px;
+            border: 1px solid var(--border); border-radius: 4px; box-sizing: border-box;
+            background: var(--input-bg); color: var(--text); resize: none;
+        }
+        #controls { display: grid; grid-template-columns: 1fr 1.2fr; gap: 8px; margin-top: 8px; }
+        .control-section { display: flex; flex-direction: column; gap: 4px; }
+        .btn-group { display: flex; gap: 4px; }
+        button {
+            padding: 4px 6px; font-size: 10px; cursor: pointer; background: #eee;
+            border: 1px solid #ccc; border-radius: 3px;
+        }
+        body.dark button { background: #444; color: #eee; border-color: #666; }
+        .toggle-group { display: flex; flex-wrap: wrap; gap: 6px; font-size: 10px; align-items: center; }
+        label { cursor: pointer; display: flex; align-items: center; gap: 2px; }
+        #error-message { color: #d93025; font-size: 10px; margin-top: 2px; min-height: 11px; font-weight: bold; }
+        #cy-container { flex-grow: 1; position: relative; background: var(--bg); }
+        #cy { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+        .theme-toggle { position: absolute; top: 10px; right: 10px; z-index: 100; }
+    </style>
+</head>
+<body>
+    <div id="ui-layer">
+        <div class="toggle-group" style="margin-bottom: 5px; justify-content: space-between;">
+            <span>Input Adjacency List:</span>
+            <label><input type="checkbox" id="dark-mode"> Dark Mode</label>
+        </div>
+        <textarea id="input" spellcheck="false">{"1": [2, 3], "2": [4], "3": [], "4": [1]}</textarea>
+        <div id="error-message"></div>
+        <div id="controls">
+            <div class="control-section">
+                <div class="toggle-group">
+                    <label><input type="radio" name="mode" value="directed" checked> Dir</label>
+                    <label><input type="radio" name="mode" value="undirected"> Undir</label>
+                </div>
+                <div class="btn-group">
+                    <button id="btn-reset">Reset</button>
+                    <button id="btn-fit">Fit</button>
+                </div>
+            </div>
+            <div class="control-section">
+                <div class="toggle-group">
+                    <span>Highlight:</span>
+                    <label><input type="radio" name="highlight" value="none" checked> None</label>
+                    <label><input type="radio" name="highlight" value="in"> In</label>
+                    <label><input type="radio" name="highlight" value="out"> Out</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cy-container"><div id="cy"></div></div>
+    <script src="cytoscape.min.js"></script>
+    <script src="panel.js"></script>
+</body>
+</html>
